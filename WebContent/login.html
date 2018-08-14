@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>分词界面测试</title>
+<style type="text/css">
+lable{
+     width:500px;
+     text-align:right;
+     display:block;
+     float:center;
+}
+section{
+     width:900px;
+     text-align:center;
+}
+textarea{
+     width:500px;
+     height:100px;
+     position:relative;
+     left:20%;
+     top:20%
+}
+</style>
+
+<script type="text/javascript">
+   function DelectWords(){
+	   //清空文本框
+	   document.getElementById("textReady").value="";
+	   document.getElementById("wordsResult").value="";
+   } 
+   
+  function UploadWords(){
+	  var xmlhttp;
+		var jsText = document.getElementById("textReady").value;
+		var queryString = "LoginServlet?javaText="+jsText;
+		queryString = encodeURI(encodeURI(queryString));
+		
+		if (window.XMLHttpRequest) {
+			//  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+			xmlhttp = new XMLHttpRequest();
+		} else {
+			// IE6, IE5 浏览器执行代码
+			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		
+		xmlhttp.onreadystatechange = function() {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				document.getElementById("wordsResult").innerHTML = xmlhttp.responseText;
+			}
+		}
+		
+		xmlhttp.open("POST", queryString, true);
+		xmlhttp.send();
+  } 
+</script>
+
+
+</head>
+<body>
+<h1 align=center>分词界面输入测试</h1>
+<section>
+     <form name="myForm" action="" method="post">
+     <p><lable>需要分词的段落：</lable>
+        <textarea id="textReady" maxlength="200" onchange="this.value=this.value.substring(0, 200)" onkeydown="this.value=this.value.substring(0, 200)" onkeyup="this.value=this.value.substring(0, 200)"></textarea>
+     </p>
+     <p><lable>分词结果的呈现：</lable>
+        <textarea id="wordsResult"></textarea>
+     </p>
+     <p><input type="button" value="分  词" id="Submit_Add" onclick="UploadWords()"><div></div>
+        <input type="button" value="清  空" id="Delect_Add" onclick="DelectWords()">
+     </p>
+     </form>
+</section>
+</body>
+</html>
+    
