@@ -1,4 +1,4 @@
-package servlet;
+ï»¿package servlet;
 
 import java.io.*;
 
@@ -18,12 +18,12 @@ public class LoginServlet extends HttpServlet {
     }
  
    
-  //·ÅÖÃÓÃ»§Ö®¼äÍ¨¹ıÖ±½ÓÔÚä¯ÀÀÆ÷ÊäÈëµØÖ··ÃÎÊÕâ¸öservlet  
+  //æ”¾ç½®ç”¨æˆ·ä¹‹é—´é€šè¿‡ç›´æ¥åœ¨æµè§ˆå™¨è¾“å…¥åœ°å€è®¿é—®è¿™ä¸ªservlet  
     protected void doGet(HttpServletRequest request,  
             HttpServletResponse response) throws ServletException, IOException {  
-     	String encoding = "UTF-8";// ×Ö·û±àÂë
-		request.setCharacterEncoding(encoding);// ÇëÇó±àÂë
-		response.setContentType("text/html;charset=" + encoding);// ÏìÓ¦±àÂë
+     	String encoding = "UTF-8";// å­—ç¬¦ç¼–ç 
+		request.setCharacterEncoding(encoding);// è¯·æ±‚ç¼–ç 
+		response.setContentType("text/html;charset=" + encoding);// å“åº”ç¼–ç 
  
 		PrintWriter out = response.getWriter();
 		String text = request.getParameter("javaText");
@@ -31,8 +31,8 @@ public class LoginServlet extends HttpServlet {
 		text = URLDecoder.decode(text,"UTF-8");
 		System.out.println(text);
 	
-		DivideWord dw=new DivideWord();//µ÷ÓÃ·Ö´Ê
-		String responseText = dw.divide(text, 5);//×î´óÕıÏòÆ¥Åä
+		DivideWord dw=new DivideWord();//è°ƒç”¨åˆ†è¯
+		String responseText = dw.divide(text, 5);//æœ€å¤§æ­£å‘åŒ¹é…
 		
 		out.println(responseText);
 		out.close();

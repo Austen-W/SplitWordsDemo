@@ -1,4 +1,4 @@
-package cn.strong;
+ï»¿package cn.strong;
 
 import java.io.*;
 import java.util.*;
@@ -7,21 +7,21 @@ public class DivideWord {
 	
 	int[] CompareArray = new int[2];
 	
-	//×î´óÕıÏòÆ¥ÅäµÄ´Ó×óÏòÓÒ
+	//æœ€å¤§æ­£å‘åŒ¹é…çš„ä»å·¦å‘å³
 	public String left_to_right_divide(String sentence,int max) throws IOException{
-		List words=new ArrayList();	//ÓÃÓÚ´æ·Å´ÊµÄ¼¯ºÏ
+		List words=new ArrayList();	//ç”¨äºå­˜æ”¾è¯çš„é›†åˆ
 		int i=0;
 		String word="";
-		int maxnum=max;	//±£´æmaxµÄÖµ
+		int maxnum=max;	//ä¿å­˜maxçš„å€¼
 		
 		while(i<sentence.length()){
-			//½ØÈ¡max³¤¶ÈµÄ´Ê£¬Èô×Ü³¤¶È²»×ã£¬Ôò½ØÈ¡Ê£Óà²¿·Ö
+			//æˆªå–maxé•¿åº¦çš„è¯ï¼Œè‹¥æ€»é•¿åº¦ä¸è¶³ï¼Œåˆ™æˆªå–å‰©ä½™éƒ¨åˆ†
 			if(i+max<=sentence.length()){
 				word=sentence.substring(i,i+max);
 			}else{
 				word=sentence.substring(i);
 			}
-			//Èç¹û½ØÈ¡µÄwordÊÇ¸ö´Ê»òÕßµ±Ç°maxÖµÎª1£¬Ôò½«word¼ÓÈëµ½´Ê¼¯ºÏÖĞ£¬²¢°ÑÖ¸ÕëÏòÇ°ÒÆ¶¯i¸öÎ»
+			//å¦‚æœæˆªå–çš„wordæ˜¯ä¸ªè¯æˆ–è€…å½“å‰maxå€¼ä¸º1ï¼Œåˆ™å°†wordåŠ å…¥åˆ°è¯é›†åˆä¸­ï¼Œå¹¶æŠŠæŒ‡é’ˆå‘å‰ç§»åŠ¨iä¸ªä½
 			if(isWord(word)||max==1){
 				words.add(word);
 				i=i+max;
@@ -33,7 +33,7 @@ public class DivideWord {
 		
 		CompareArray[0] = words.size();
 		
-		//½«¼¯ºÏºÏ³ÉÒ»¸ö×Ö·û´®·µ»Ø
+		//å°†é›†åˆåˆæˆä¸€ä¸ªå­—ç¬¦ä¸²è¿”å›
 		String result="";
 		for(int j=0;j<words.size();j++){
 			result+=words.get(j).toString()+"/";
@@ -41,22 +41,22 @@ public class DivideWord {
 		return result;
 	}
 	
-	//×î´óÕıÏòÆ¥ÅäµÄ´ÓÓÒÏò×ó
+	//æœ€å¤§æ­£å‘åŒ¹é…çš„ä»å³å‘å·¦
 	public String right_to_left_divide(String sentence,int max) throws IOException{
-		List words=new ArrayList();	//ÓÃÓÚ´æ·Å´ÊµÄ¼¯ºÏ
+		List words=new ArrayList();	//ç”¨äºå­˜æ”¾è¯çš„é›†åˆ
 		int i=sentence.length();
 		String word="";
-		int maxnum=max;	//±£´æmaxµÄÖµ
+		int maxnum=max;	//ä¿å­˜maxçš„å€¼
 		
 		while(i>0){
-			//½ØÈ¡max³¤¶ÈµÄ´Ê£¬Èô×Ü³¤¶È²»×ã£¬Ôò½ØÈ¡Ê£Óà²¿·Ö
+			//æˆªå–maxé•¿åº¦çš„è¯ï¼Œè‹¥æ€»é•¿åº¦ä¸è¶³ï¼Œåˆ™æˆªå–å‰©ä½™éƒ¨åˆ†
 			if(i-max>=0){
 				word=sentence.substring(i-max,i);
 			}else{
 				word=sentence.substring(0,i);
 			}
 			
-			//Èç¹û½ØÈ¡µÄwordÊÇ¸ö´Ê»òÕßµ±Ç°maxÖµÎª1£¬Ôò½«word¼ÓÈëµ½´Ê¼¯ºÏÖĞ£¬²¢°ÑÖ¸ÕëÏòÇ°ÒÆ¶¯i¸öÎ»
+			//å¦‚æœæˆªå–çš„wordæ˜¯ä¸ªè¯æˆ–è€…å½“å‰maxå€¼ä¸º1ï¼Œåˆ™å°†wordåŠ å…¥åˆ°è¯é›†åˆä¸­ï¼Œå¹¶æŠŠæŒ‡é’ˆå‘å‰ç§»åŠ¨iä¸ªä½
 			if(isWord(word)||max==1){
 				words.add(word);
 				i=i-max;
@@ -68,7 +68,7 @@ public class DivideWord {
 		
 		CompareArray[1] = words.size();
 		
-		//½«¼¯ºÏºÏ³ÉÒ»¸ö×Ö·û´®·µ»Ø
+		//å°†é›†åˆåˆæˆä¸€ä¸ªå­—ç¬¦ä¸²è¿”å›
 		String result="";
 		for(int j=words.size()-1;j>=0;j--){
 			result+=words.get(j).toString()+"/";
@@ -76,7 +76,7 @@ public class DivideWord {
 		return result;
 	}
 	
-	//´ò¿ª´Êµäword.txt£¬Æ¥Åäword£¬ÅĞ¶ÏwordÊÇ·ñÊÇÒ»¸ö´Ê
+	//æ‰“å¼€è¯å…¸word.txtï¼ŒåŒ¹é…wordï¼Œåˆ¤æ–­wordæ˜¯å¦æ˜¯ä¸€ä¸ªè¯
 	public boolean isWord(String word) throws IOException{
 		boolean isword=false;
 	//	BufferedReader br=new BufferedReader(new FileReader("D:\\jdk\\java\\SpiltWords\\dictionary.txt"));
@@ -93,7 +93,7 @@ public class DivideWord {
 		return isword;
 	}
 	
-	//´Ó×óÍùÓÒºÍ´ÓÓÒÍù×óÁ½ÖÖ·½·¨µÄÑ¡Ôñ
+	//ä»å·¦å¾€å³å’Œä»å³å¾€å·¦ä¸¤ç§æ–¹æ³•çš„é€‰æ‹©
 	public String divide(String sentence,int max) throws IOException{
 		left_to_right_divide(sentence,max);
 		right_to_left_divide(sentence,max);
