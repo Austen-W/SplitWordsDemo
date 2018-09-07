@@ -27,12 +27,12 @@ public class LoginServlet extends HttpServlet {
  
 		PrintWriter out = response.getWriter();
 		String text = request.getParameter("javaText");
-		System.out.println(text);
+	//	System.out.println(text);
 		text = URLDecoder.decode(text,"UTF-8");
-		System.out.println(text);
+	//	System.out.println(text);
 	
 		DivideWord dw=new DivideWord();//调用分词
-		String responseText = dw.divide(text, 5);//最大正向匹配
+		String responseText = dw.divide(text, 7);//最大正向匹配
 		
 		out.println(responseText);
 		out.close();

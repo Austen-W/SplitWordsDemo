@@ -1,4 +1,4 @@
-﻿package cn.strong;
+package cn.strong;
 
 import java.io.*;
 import java.util.*;
@@ -79,8 +79,8 @@ public class DivideWord {
 	//打开词典word.txt，匹配word，判断word是否是一个词
 	public boolean isWord(String word) throws IOException{
 		boolean isword=false;
-	//	BufferedReader br=new BufferedReader(new FileReader("D:\\jdk\\java\\SpiltWords\\dictionary.txt"));
-		BufferedReader br=new BufferedReader(new FileReader("../../dictionary.txt"));
+		BufferedReader br=new BufferedReader(new FileReader("D:\\jdk\\java\\SpiltWords\\dictionary.txt"));
+	//	BufferedReader br=new BufferedReader(new FileReader("../../dictionary.txt"));
 		String text;
 		while((text=br.readLine())!=null){
 			String[]key=text.split(",");
@@ -98,10 +98,14 @@ public class DivideWord {
 		left_to_right_divide(sentence,max);
 		right_to_left_divide(sentence,max);
 		
-		if(CompareArray[0] < CompareArray[1])
+		if(CompareArray[0] < CompareArray[1]){
+			System.out.println("left_to_right");
 			return left_to_right_divide(sentence,max);
-		else
+		}
+		else{
+			System.out.println("right_to_left");
 			return right_to_left_divide(sentence,max);
+		}
 	}
 	
 	public static void main(String[]args) throws IOException{
